@@ -99,11 +99,11 @@ For domestic China usage, keep `rules/direct/ChinaServices.list` before proxy an
 
 | Source / reference | Usage |
 | --- | --- |
-| `blackmatrix7/ios_rule_script` | Detailed Surge / Clash service rules |
-| `Loyalsoldier/clash-rules` | Clash / Stash base rules |
-| `MetaCubeX/meta-rules-dat` | Mihomo / Clash Meta ecosystem reference |
-| `xiaolai/anthropic-claude-surge-rules-set` | External reference for Claude Code, Claude Desktop, MCP, and Anthropic IP coverage; not used as a remote dependency |
-| Local curated split rules | Dedicated ChatGPT, Claude, Gemini, GitHub/Copilot rules maintained in `rules/ai/` |
+| [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) | Detailed Surge / Clash service rules |
+| [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) | Clash / Stash base rules |
+| [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) | Mihomo / Clash Meta ecosystem reference |
+| [xiaolai/anthropic-claude-surge-rules-set](https://github.com/xiaolai/anthropic-claude-surge-rules-set) | External reference for Claude Code, Claude Desktop, MCP, and Anthropic IP coverage; not used as a remote dependency |
+| [Local curated split rules](rules/ai/) | Dedicated ChatGPT, Claude, Gemini, GitHub/Copilot rules maintained in `rules/ai/` |
 
 High-frequency base rules such as China domains, China IP, LAN, GeoIP, and Apple global rules prefer client built-ins or active upstream sources.
 
@@ -192,11 +192,11 @@ Clash / Stash 模板包含这些常见协议示例：
 
 | 来源 / 参考 | 用途 |
 | --- | --- |
-| `blackmatrix7/ios_rule_script` | 细分服务规则 |
-| `Loyalsoldier/clash-rules` | Clash / Stash 基础规则 |
-| `MetaCubeX/meta-rules-dat` | Mihomo / Clash Meta 生态参考 |
-| `xiaolai/anthropic-claude-surge-rules-set` | Claude Code、Claude Desktop、MCP 和 Anthropic IP 覆盖的外部参考；不作为远程规则依赖 |
-| 本地整理的拆分规则 | `rules/ai/` 里维护 ChatGPT、Claude、Gemini、GitHub/Copilot 专用规则 |
+| [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) | 细分服务规则 |
+| [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) | Clash / Stash 基础规则 |
+| [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) | Mihomo / Clash Meta 生态参考 |
+| [xiaolai/anthropic-claude-surge-rules-set](https://github.com/xiaolai/anthropic-claude-surge-rules-set) | Claude Code、Claude Desktop、MCP 和 Anthropic IP 覆盖的外部参考；不作为远程规则依赖 |
+| [本地整理的拆分规则](rules/ai/) | `rules/ai/` 里维护 ChatGPT、Claude、Gemini、GitHub/Copilot 专用规则 |
 
 ### 🙏 致谢
 
