@@ -1,0 +1,317 @@
+# ============================================================
+# Clash / Stash Multi-Node Template
+# Fill in your own nodes and keep the rule providers as-is.
+# ============================================================
+#
+# Default rule base:
+#   https://raw.githubusercontent.com/bleeeet/surge-rules/main
+#
+# Add more nodes:
+#   1. Copy one item under "proxies".
+#   2. Give it a unique name.
+#   3. Add that name to "🔰 Manual Select", "♻️ Auto Select",
+#      and any service group where you want it selectable.
+#
+# Common fields:
+#   server      -> server IP or domain
+#   port        -> server port
+#   password    -> Shadowsocks / Trojan password
+#   uuid        -> VLESS / VMess UUID
+#   cipher      -> Shadowsocks cipher
+#   tls         -> enable TLS
+#   udp         -> enable UDP
+#   network     -> tcp / ws / grpc
+#   servername  -> TLS / Reality SNI
+#
+# ============================================================
+
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+external-controller: 127.0.0.1:9090
+
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:1053
+  default-nameserver:
+    - 119.29.29.29
+    - 8.8.8.8
+    - 1.1.1.1
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 1.1.1.1
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - localhost
+    - time.*.com
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
+
+proxies:
+  # VLESS + Reality example
+  - name: US-1
+    type: vless
+    server: US_1_SERVER_IP_OR_DOMAIN
+    port: US_1_PORT
+    uuid: US_1_UUID
+    tls: true
+    udp: true
+    network: tcp
+    servername: US_1_REALITY_SERVERNAME
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: US_1_REALITY_PUBLIC_KEY
+      short-id: US_1_REALITY_SHORT_ID
+    client-fingerprint: chrome
+
+  # VLESS + Reality example
+  - name: US-2
+    type: vless
+    server: US_2_SERVER_IP_OR_DOMAIN
+    port: US_2_PORT
+    uuid: US_2_UUID
+    tls: true
+    udp: true
+    network: tcp
+    servername: US_2_REALITY_SERVERNAME
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: US_2_REALITY_PUBLIC_KEY
+      short-id: US_2_REALITY_SHORT_ID
+    client-fingerprint: chrome
+
+  # Shadowsocks example
+  - name: HK-1
+    type: ss
+    server: HK_1_SERVER_IP_OR_DOMAIN
+    port: HK_1_PORT
+    cipher: HK_1_SS_CIPHER
+    password: HK_1_SS_PASSWORD
+    udp: true
+
+  # Trojan example
+  - name: JP-1
+    type: trojan
+    server: JP_1_SERVER_IP_OR_DOMAIN
+    port: JP_1_PORT
+    password: JP_1_TROJAN_PASSWORD
+    sni: JP_1_TLS_SERVERNAME
+    udp: true
+
+  # VMess + WebSocket example
+  - name: SG-1
+    type: vmess
+    server: SG_1_SERVER_IP_OR_DOMAIN
+    port: SG_1_PORT
+    uuid: SG_1_UUID
+    alterId: 0
+    cipher: auto
+    tls: true
+    servername: SG_1_TLS_SERVERNAME
+    network: ws
+    ws-opts:
+      path: SG_1_WS_PATH
+      headers:
+        Host: SG_1_WS_HOST
+    udp: true
+
+proxy-groups:
+  - name: 🔰 Manual Select
+    type: select
+    proxies:
+      - ♻️ Auto Select
+      - US-1
+      - US-2
+      - HK-1
+      - JP-1
+      - SG-1
+      - 🎯 Direct
+      - ⛔️ Reject
+
+  - name: ♻️ Auto Select
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - US-1
+      - US-2
+      - HK-1
+      - JP-1
+      - SG-1
+
+  - name: ChatGPT
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: Claude
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: Gemini
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: GitHub
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: Microsoft
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, 🎯 Direct, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: Telegram
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: Apple
+    type: select
+    proxies: [🎯 Direct, 🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: YouTube
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: Netflix
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: Spotify
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: AI
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, US-1, US-2, HK-1, JP-1, SG-1]
+  - name: 🎯 Direct
+    type: select
+    proxies: [DIRECT]
+  - name: ⛔️ Reject
+    type: select
+    proxies: [REJECT]
+  - name: 🐟 Final
+    type: select
+    proxies: [🔰 Manual Select, ♻️ Auto Select, 🎯 Direct, US-1, US-2, HK-1, JP-1, SG-1]
+
+rule-providers:
+  Direct:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt
+    path: ./ruleset/loyalsoldier-direct.yaml
+    interval: 86400
+  Proxy:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt
+    path: ./ruleset/loyalsoldier-proxy.yaml
+    interval: 86400
+  Reject:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt
+    path: ./ruleset/loyalsoldier-reject.yaml
+    interval: 86400
+  Private:
+    type: http
+    behavior: domain
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt
+    path: ./ruleset/loyalsoldier-private.yaml
+    interval: 86400
+  ChinaCIDR:
+    type: http
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt
+    path: ./ruleset/loyalsoldier-cncidr.yaml
+    interval: 86400
+  Spotify:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml
+    path: ./ruleset/Spotify.yaml
+    interval: 86400
+  Microsoft:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+    path: ./ruleset/Microsoft.yaml
+    interval: 86400
+  OneDrive:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml
+    path: ./ruleset/OneDrive.yaml
+    interval: 86400
+  Telegram:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+    path: ./ruleset/Telegram.yaml
+    interval: 86400
+  ChatGPT:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/ChatGPT.list
+    path: ./ruleset/ChatGPT.list
+    interval: 86400
+  Anthropic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/Anthropic.list
+    path: ./ruleset/Anthropic.list
+    interval: 86400
+  Gemini:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/Gemini.list
+    path: ./ruleset/Gemini.list
+    interval: 86400
+  GitHubCopilot:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/GitHubCopilot.list
+    path: ./ruleset/GitHubCopilot.list
+    interval: 86400
+  AI:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/services/AI.list
+    path: ./ruleset/AI.list
+    interval: 86400
+  YouTube:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+    path: ./ruleset/YouTube.yaml
+    interval: 86400
+  YouTubeMusic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml
+    path: ./ruleset/YouTubeMusic.yaml
+    interval: 86400
+  Netflix:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml
+    path: ./ruleset/Netflix.yaml
+    interval: 86400
+
+rules:
+  - RULE-SET,Private,🎯 Direct
+  - RULE-SET,Reject,⛔️ Reject
+  - RULE-SET,Direct,🎯 Direct
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,Microsoft,Microsoft
+  - RULE-SET,OneDrive,Microsoft
+  - RULE-SET,Telegram,Telegram
+  - RULE-SET,ChatGPT,ChatGPT
+  - RULE-SET,Anthropic,Claude
+  - RULE-SET,Gemini,Gemini
+  - RULE-SET,GitHubCopilot,GitHub
+  - RULE-SET,AI,AI
+  - RULE-SET,YouTube,YouTube
+  - RULE-SET,YouTubeMusic,YouTube
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,Proxy,🔰 Manual Select
+  - RULE-SET,ChinaCIDR,🎯 Direct
+  - GEOIP,LAN,🎯 Direct,no-resolve
+  - GEOIP,CN,🎯 Direct
+  - MATCH,🐟 Final
