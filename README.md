@@ -105,6 +105,8 @@ For domestic China usage, keep `rules/direct/ChinaServices.list` before proxy an
 | [xiaolai/anthropic-claude-surge-rules-set](https://github.com/xiaolai/anthropic-claude-surge-rules-set) | External reference for Claude Code, Claude Desktop, MCP, and Anthropic IP coverage; not used as a remote dependency |
 | [Local curated split rules](rules/ai/) | Dedicated ChatGPT, Claude, Gemini, GitHub/Copilot rules maintained in `rules/ai/` |
 
+These sources are selected because they are actively maintained, widely used by the community, and cover different parts of the proxy rules ecosystem well. This repository does not try to replace them; it mirrors, splits, and combines practical pieces into a comfortable everyday setup for Surge, Clash, and Stash.
+
 High-frequency base rules such as China domains, China IP, LAN, GeoIP, and Apple global rules prefer client built-ins or active upstream sources.
 
 ### 🙏 Thanks
@@ -197,6 +199,8 @@ Clash / Stash 模板包含这些常见协议示例：
 | [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) | Mihomo / Clash Meta 生态参考 |
 | [xiaolai/anthropic-claude-surge-rules-set](https://github.com/xiaolai/anthropic-claude-surge-rules-set) | Claude Code、Claude Desktop、MCP 和 Anthropic IP 覆盖的外部参考；不作为远程规则依赖 |
 | [本地整理的拆分规则](rules/ai/) | `rules/ai/` 里维护 ChatGPT、Claude、Gemini、GitHub/Copilot 专用规则 |
+
+选择这些来源，是因为它们维护活跃、覆盖面互补，也是在社区里被大量使用和验证过的规则来源。本仓库不是替代它们，而是把这些来源里实用的部分镜像、拆分、归纳和组合成一套日常用起来更顺手的 Surge、Clash、Stash 配置。
 
 ### 🙏 致谢
 
