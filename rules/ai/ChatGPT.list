@@ -1,0 +1,15 @@
+# NAME: ChatGPT
+# NOTE: ChatGPT / OpenAI web, API, static assets, and file assets.
+
+DOMAIN,api.openai.com
+DOMAIN,auth.openai.com
+DOMAIN,chat.openai.com
+DOMAIN,file.oaiusercontent.com
+DOMAIN-SUFFIX,ai.com
+DOMAIN-SUFFIX,chat.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,sora.com
+DOMAIN-KEYWORD,openai

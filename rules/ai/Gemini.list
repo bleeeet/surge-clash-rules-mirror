@@ -1,0 +1,32 @@
+# NAME: Gemini
+# NOTE: Gemini web, Google AI Studio, NotebookLM, Google AI APIs, and related Google AI endpoints.
+
+DOMAIN,ai.google.dev
+DOMAIN,aida.googleapis.com
+DOMAIN,aiplatform.googleapis.com
+DOMAIN,aisandbox-pa.googleapis.com
+DOMAIN,alkalicore-pa.clients6.google.com
+DOMAIN,antigravity-unleash.goog
+DOMAIN,antigravity.google
+DOMAIN,daily-cloudcode-pa.googleapis.com
+DOMAIN,generativelanguage.googleapis.com
+DOMAIN,jules.google.com
+DOMAIN,robinfrontend-pa.googleapis.com
+DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,cloudcode-pa.googleapis.com
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,g.ai
+DOMAIN-SUFFIX,geller-pa.googleapis.com
+DOMAIN-SUFFIX,gemini.google
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,generativeai.google
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,notebooklm.google
+DOMAIN-SUFFIX,notebooklm.google.com
+DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
+DOMAIN-KEYWORD,alkalimakersuite-pa.clients6.google.com
+URL-REGEX,https://www\.google\.com/.*continue=https://gemini\.google\.com.+
