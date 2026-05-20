@@ -1,10 +1,18 @@
 # NAME: Anthropic
-# NOTE: Claude, Anthropic Console, and Anthropic API.
+# NOTE: Claude, Anthropic Console, Anthropic API, Claude Code, Claude Desktop, and MCP.
+# REFERENCE: https://github.com/xiaolai/anthropic-claude-surge-rules-set
 
 DOMAIN,api.anthropic.com
 DOMAIN,claude.ai
 DOMAIN,console.anthropic.com
+DOMAIN,downloads.claude.ai
+DOMAIN,cdn.growthbook.io
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,claude.com
 DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,modelcontextprotocol.io
+IP-CIDR,160.79.104.0/23,no-resolve
+IP-CIDR,160.79.104.0/21,no-resolve
+IP-CIDR6,2607:6bc0::/48,no-resolve

@@ -1,0 +1,41 @@
+# NAME: ChinaServices
+# NOTE: Common mainland China services that should prefer DIRECT.
+
+# Tencent / WeChat / QQ
+DOMAIN,qq.com
+DOMAIN,weixin.qq.com
+DOMAIN-SUFFIX,gtimg.cn
+DOMAIN-SUFFIX,gtimg.com
+DOMAIN-SUFFIX,imqq.com
+DOMAIN-SUFFIX,myqcloud.com
+DOMAIN-SUFFIX,qq.com
+DOMAIN-SUFFIX,qlogo.cn
+DOMAIN-SUFFIX,qpic.cn
+DOMAIN-SUFFIX,qpic.com
+DOMAIN-SUFFIX,tencent-cloud.com
+DOMAIN-SUFFIX,tencent-cloud.net
+DOMAIN-SUFFIX,tencent.com
+DOMAIN-SUFFIX,tenpay.com
+DOMAIN-SUFFIX,wechat.com
+DOMAIN-SUFFIX,wechatpay.cn
+DOMAIN-SUFFIX,weixin.qq.com
+
+# Alibaba / Taobao / Alipay / Aliyun
+DOMAIN-SUFFIX,1688.com
+DOMAIN-SUFFIX,alicdn.com
+DOMAIN-SUFFIX,alibaba.com
+DOMAIN-SUFFIX,alibabacloud.com
+DOMAIN-SUFFIX,alipay.com
+DOMAIN-SUFFIX,alipayobjects.com
+DOMAIN-SUFFIX,aliyun.com
+DOMAIN-SUFFIX,aliyuncs.com
+DOMAIN-SUFFIX,amap.com
+DOMAIN-SUFFIX,autonavi.com
+DOMAIN-SUFFIX,ele.me
+DOMAIN-SUFFIX,taobao.com
+DOMAIN-SUFFIX,tmall.com
+
+# Nutstore / Jianguoyun
+DOMAIN-SUFFIX,jianguoyun.com
+DOMAIN-SUFFIX,nutstore.com
+DOMAIN-SUFFIX,nutstore.net

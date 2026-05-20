@@ -132,16 +132,16 @@ proxy-groups:
 
   - name: ChatGPT
     type: select
-    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+    proxies: [♻️ 自动选择, Node-1]
   - name: Claude
     type: select
-    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+    proxies: [♻️ 自动选择, Node-1]
   - name: Gemini
     type: select
-    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+    proxies: [♻️ 自动选择, Node-1]
   - name: GitHub
     type: select
-    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+    proxies: [♻️ 自动选择, Node-1]
   - name: Microsoft
     type: select
     proxies: [🔰 手动选择, ♻️ 自动选择, 🎯 全球直连, Node-1]
@@ -162,7 +162,7 @@ proxy-groups:
     proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
   - name: AI
     type: select
-    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+    proxies: [♻️ 自动选择, Node-1]
   - name: 🎯 全球直连
     type: select
     proxies: [DIRECT]
@@ -179,6 +179,12 @@ rule-providers:
     behavior: domain
     url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt
     path: ./ruleset/loyalsoldier-direct.yaml
+    interval: 86400
+  ChinaServices:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/direct/ChinaServices.list
+    path: ./ruleset/ChinaServices.list
     interval: 86400
   Proxy:
     type: http
@@ -227,6 +233,12 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
     path: ./ruleset/Telegram.list
+    interval: 86400
+  Apple:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.list
+    path: ./ruleset/Apple.list
     interval: 86400
   ChatGPT:
     type: http
@@ -280,6 +292,8 @@ rules:
   - RULE-SET,Private,🎯 全球直连
   - RULE-SET,Reject,⛔️ 禁止访问
   - RULE-SET,Direct,🎯 全球直连
+  - RULE-SET,ChinaServices,🎯 全球直连
+  - RULE-SET,Apple,Apple
   - RULE-SET,Spotify,Spotify
   - RULE-SET,Microsoft,Microsoft
   - RULE-SET,OneDrive,Microsoft

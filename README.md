@@ -15,6 +15,8 @@ https://raw.githubusercontent.com/bleeeet/surge-rules/main/
 ### ✨ Features
 
 - 🧠 Dedicated AI groups: ChatGPT, Claude, Gemini, GitHub Copilot
+- 🛡️ Strict AI routing: AI groups avoid DIRECT options to reduce accidental domestic egress
+- 🇨🇳 China services DIRECT list for Tencent, Alibaba, Alipay, Aliyun, and Nutstore/Jianguoyun
 - 🧑‍💻 Developer service groups: GitHub, Microsoft, OneDrive, JetBrains
 - 🎬 Streaming groups: YouTube, Netflix, Spotify, TikTok
 - 🧩 Templates for Surge, Clash, and Stash
@@ -78,6 +80,8 @@ Keep the protocol example you need and fill in server, port, password, UUID, Rea
 
 Dedicated rules are matched first. The `AI` group catches other AI services that are not split into separate groups.
 
+For domestic China usage, keep `rules/direct/ChinaServices.list` before proxy and AI rules. This keeps common Tencent, Alibaba, Alipay, Aliyun, and Nutstore/Jianguoyun traffic on DIRECT while Claude, ChatGPT, Gemini, GitHub Copilot, YouTube, X/Twitter, GitHub, and other proxy rules still use proxy groups.
+
 ### 📁 Structure
 
 | Path | Content |
@@ -91,16 +95,21 @@ Dedicated rules are matched first. The `AI` group catches other AI services that
 | `rules/proxy/` | Common proxy rules |
 | `tools/` | Rule update script |
 
-### 🧱 Rule Sources
+### 🧱 Rule Sources and References
 
-| Source | Usage |
+| Source / reference | Usage |
 | --- | --- |
 | `blackmatrix7/ios_rule_script` | Detailed Surge / Clash service rules |
 | `Loyalsoldier/clash-rules` | Clash / Stash base rules |
 | `MetaCubeX/meta-rules-dat` | Mihomo / Clash Meta ecosystem reference |
-| This repository | Dedicated ChatGPT, Claude, Gemini, GitHub/Copilot rules |
+| Local curated split rules | Dedicated ChatGPT, Claude, Gemini, GitHub/Copilot rules maintained in `rules/ai/` |
+| `xiaolai/anthropic-claude-surge-rules-set` | External reference for Claude Code, Claude Desktop, MCP, and Anthropic IP coverage; not used as a remote dependency |
 
 High-frequency base rules such as China domains, China IP, LAN, GeoIP, and Apple global rules prefer client built-ins or active upstream sources.
+
+### 🙏 Thanks
+
+Thanks to @blackmatrix7, @Loyalsoldier, @MetaCubeX, @chenyk1219, @Coldvvater, and @xiaolai for publishing and maintaining useful rule sources and references through their public projects. This repository uses or references their public work where noted above.
 
 ### 🔄 Update
 
@@ -130,6 +139,8 @@ https://raw.githubusercontent.com/bleeeet/surge-rules/main/
 ### ✨ 特性
 
 - 🧠 AI 服务独立分流：ChatGPT、Claude、Gemini、GitHub Copilot
+- 🛡️ AI 严格代理：AI 分组不提供 DIRECT 选项，降低误切国内出口的风险
+- 🇨🇳 国内常用服务直连：腾讯、阿里、支付宝、阿里云、坚果云等走本地直连表
 - 🧑‍💻 开发服务独立分流：GitHub、Microsoft、OneDrive、JetBrains
 - 🎬 流媒体独立分流：YouTube、Netflix、Spotify、TikTok
 - 🧩 同时提供 Surge、Clash、Stash 模板
@@ -175,13 +186,20 @@ Clash / Stash 模板包含这些常见协议示例：
 | `Spotify` | Spotify |
 | `AI` | 其他 AI 服务兜底 |
 
-### 🧱 规则来源
+国内使用时，建议保留 `rules/direct/ChinaServices.list` 在代理和 AI 规则之前。这样腾讯、阿里、支付宝、阿里云、坚果云等常用国内服务优先直连，而 Claude、ChatGPT、Gemini、GitHub Copilot、YouTube、X/Twitter、GitHub 等仍然走代理分组。
 
-| 来源 | 用途 |
+### 🧱 规则来源与参考
+
+| 来源 / 参考 | 用途 |
 | --- | --- |
 | `blackmatrix7/ios_rule_script` | 细分服务规则 |
 | `Loyalsoldier/clash-rules` | Clash / Stash 基础规则 |
 | `MetaCubeX/meta-rules-dat` | Mihomo / Clash Meta 生态参考 |
-| 本仓库 | ChatGPT、Claude、Gemini、GitHub/Copilot 专用规则 |
+| 本地整理的拆分规则 | `rules/ai/` 里维护 ChatGPT、Claude、Gemini、GitHub/Copilot 专用规则 |
+| `xiaolai/anthropic-claude-surge-rules-set` | Claude Code、Claude Desktop、MCP 和 Anthropic IP 覆盖的外部参考；不作为远程规则依赖 |
+
+### 🙏 致谢
+
+感谢 @blackmatrix7、@Loyalsoldier、@MetaCubeX、@chenyk1219、@Coldvvater、@xiaolai 通过公开项目发布并维护这些有价值的规则源与参考内容。本仓库仅在上文标注范围内使用或参考这些公开内容。
 
 </details>
