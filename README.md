@@ -29,11 +29,11 @@ https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/
 | --- | --- |
 | Surge with one Snell node | [`config/surge-template.conf`](config/surge-template.conf) |
 | Surge with multiple Snell / ShadowTLS nodes | [`config/surge-template-multi-node.conf`](config/surge-template-multi-node.conf) |
+| Existing Surge profile, only need groups and rules | [`config/surge-rules-github.tpl.conf`](config/surge-rules-github.tpl.conf) |
 | Clash / Mihomo / Stash with one node | [`config/clash-template.yaml`](config/clash-template.yaml) |
 | Clash / Mihomo / Stash with multiple nodes | [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml) |
 | Loon rules-only snippet | [`config/loon-rules.conf`](config/loon-rules.conf) |
 | Quantumult X rules-only snippet | [`config/quantumultx-rules.conf`](config/quantumultx-rules.conf) |
-| Existing Surge profile, only need groups and rules | [`config/surge-rules-github.tpl.conf`](config/surge-rules-github.tpl.conf) |
 
 ### ⚡ Usage
 
@@ -190,11 +190,11 @@ https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/
 | --- | --- |
 | Surge 单个 Snell 节点 | [`config/surge-template.conf`](config/surge-template.conf) |
 | Surge 多个 Snell / ShadowTLS 节点 | [`config/surge-template-multi-node.conf`](config/surge-template-multi-node.conf) |
+| 已有 Surge 配置，只需要复制分组和规则 | [`config/surge-rules-github.tpl.conf`](config/surge-rules-github.tpl.conf) |
 | Clash / Mihomo / Stash 单节点 | [`config/clash-template.yaml`](config/clash-template.yaml) |
 | Clash / Mihomo / Stash 多节点 | [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml) |
 | Loon 规则片段 | [`config/loon-rules.conf`](config/loon-rules.conf) |
 | Quantumult X 规则片段 | [`config/quantumultx-rules.conf`](config/quantumultx-rules.conf) |
-| 已有 Surge 配置，只需要复制分组和规则 | [`config/surge-rules-github.tpl.conf`](config/surge-rules-github.tpl.conf) |
 
 ### ⚡ 使用方式
 
