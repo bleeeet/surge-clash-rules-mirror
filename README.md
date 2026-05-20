@@ -1,15 +1,15 @@
-# 🚀 Surge Clash Rules Mirror
+# 🚀 Surge/Clash Rules Mirror
 
 [English](#english) | [中文](#中文)
 
 ## English
 
-Surge Clash Rules Mirror is a reusable rule mirror and configuration template collection for Surge, Clash, and Stash.
+Surge/Clash Rules Mirror is a reusable rule mirror and configuration template collection for Surge, Clash, and Stash.
 
 This repository focuses on practical policy groups for AI services, developer tools, streaming platforms, common services, direct rules, and blocking rules. Templates use this repository's GitHub Raw URLs by default and can be used as a clean starting point for personal configurations.
 
 ```text
-https://raw.githubusercontent.com/bleeeet/surge-rules/main/
+https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/
 ```
 
 ### ✨ Features
@@ -128,12 +128,12 @@ Commit and push after updating.
 
 ## 中文
 
-Surge Clash Rules Mirror 是一个面向 Surge、Clash、Stash 的规则镜像与配置模板仓库。
+Surge/Clash Rules Mirror 是一个面向 Surge、Clash、Stash 的规则镜像与配置模板仓库。
 
 仓库重点整理 AI 服务、开发工具、流媒体、常用服务、直连规则和拦截规则。模板默认使用本仓库的 GitHub Raw 地址，可以作为个人配置的起点。
 
 ```text
-https://raw.githubusercontent.com/bleeeet/surge-rules/main/
+https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/
 ```
 
 ### ✨ 特性

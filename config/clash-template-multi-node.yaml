@@ -4,7 +4,7 @@
 # ============================================================
 #
 # Default rule base:
-#   https://raw.githubusercontent.com/bleeeet/surge-rules/main
+#   https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main
 #
 # Add more nodes:
 #   1. Copy one item under "proxies".
@@ -200,7 +200,7 @@ rule-providers:
   ChinaServices:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/direct/ChinaServices.list
+    url: https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/rules/direct/ChinaServices.list
     path: ./ruleset/ChinaServices.yaml
     interval: 86400
   Proxy:
@@ -260,31 +260,31 @@ rule-providers:
   ChatGPT:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/ChatGPT.list
+    url: https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/rules/ai/ChatGPT.list
     path: ./ruleset/ChatGPT.list
     interval: 86400
   Anthropic:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/Anthropic.list
+    url: https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/rules/ai/Anthropic.list
     path: ./ruleset/Anthropic.list
     interval: 86400
   Gemini:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/Gemini.list
+    url: https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/rules/ai/Gemini.list
     path: ./ruleset/Gemini.list
     interval: 86400
   GitHubCopilot:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/GitHubCopilot.list
+    url: https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/rules/ai/GitHubCopilot.list
     path: ./ruleset/GitHubCopilot.list
     interval: 86400
   AI:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/services/AI.list
+    url: https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/rules/services/AI.list
     path: ./ruleset/AI.list
     interval: 86400
   YouTube:
