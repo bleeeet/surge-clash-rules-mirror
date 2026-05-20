@@ -4,7 +4,7 @@
 
 ## English
 
-Surge/Clash Rules Mirror is a reusable rule mirror and configuration template collection for Surge, Clash, and Stash.
+Surge/Clash Rules Mirror is a reusable rule mirror and configuration template collection for Surge, Clash, Mihomo, Stash, Loon, and Quantumult X.
 
 This repository focuses on practical policy groups for AI services, developer tools, streaming platforms, common services, direct rules, and blocking rules. Templates use this repository's GitHub Raw URLs by default and can be used as a clean starting point for personal configurations.
 
@@ -19,7 +19,7 @@ https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/
 - 🇨🇳 China services DIRECT list for Tencent, Alibaba, Alipay, Aliyun, and Nutstore/Jianguoyun
 - 🧑‍💻 Developer service groups: GitHub, Microsoft, OneDrive, JetBrains
 - 🎬 Streaming groups: YouTube, Netflix, Spotify, TikTok
-- 🧩 Templates for Surge, Clash, and Stash
+- 🧩 Templates for Surge, Clash/Mihomo, Stash, Loon, and Quantumult X
 - 🔄 Mirrored custom rules plus active upstream rule providers
 - 📝 Placeholder-based templates for easy node configuration
 
@@ -29,8 +29,10 @@ https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/
 | --- | --- |
 | Surge with one Snell node | [`config/surge-template.conf`](config/surge-template.conf) |
 | Surge with multiple Snell / ShadowTLS nodes | [`config/surge-template-multi-node.conf`](config/surge-template-multi-node.conf) |
-| Clash / Stash with one node | [`config/clash-template.yaml`](config/clash-template.yaml) |
-| Clash / Stash with multiple nodes | [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml) |
+| Clash / Mihomo / Stash with one node | [`config/clash-template.yaml`](config/clash-template.yaml) |
+| Clash / Mihomo / Stash with multiple nodes | [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml) |
+| Loon rules-only snippet | [`config/loon-rules.conf`](config/loon-rules.conf) |
+| Quantumult X rules-only snippet | [`config/quantumultx-rules.conf`](config/quantumultx-rules.conf) |
 | Existing Surge profile, only need groups and rules | [`config/surge-rules-github.tpl.conf`](config/surge-rules-github.tpl.conf) |
 
 ### ⚡ Usage
@@ -49,9 +51,9 @@ YOUR_SNELL_PSK
 
 For multiple nodes, use [`config/surge-template-multi-node.conf`](config/surge-template-multi-node.conf). Add nodes under `[Proxy]`, then add the node names to `🔰 节点选择` and `♻️ 自动选择`.
 
-#### Clash / Stash
+#### Clash / Mihomo / Stash
 
-Use [`config/clash-template.yaml`](config/clash-template.yaml) for a single node, or [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml) for multiple nodes.
+Use [`config/clash-template.yaml`](config/clash-template.yaml) for a single node, or [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml) for multiple nodes. These templates use the Clash Meta / Mihomo style rule provider layout and are intended for Mihomo-compatible clients such as Stash.
 
 Included protocol examples:
 
@@ -61,6 +63,15 @@ Included protocol examples:
 - VMess
 
 Keep the protocol example you need and fill in server, port, password, UUID, Reality, or TLS fields.
+
+#### Loon / Quantumult X
+
+Loon and Quantumult X do not use Clash YAML directly, so this repository provides rules-only snippets:
+
+- [`config/loon-rules.conf`](config/loon-rules.conf)
+- [`config/quantumultx-rules.conf`](config/quantumultx-rules.conf)
+
+Add your own nodes and policy groups in the app first, then copy or import the snippet. AI policies should point to proxy nodes only.
 
 ### 🧠 Policy Groups
 
@@ -86,7 +97,7 @@ For domestic China usage, keep `rules/direct/ChinaServices.list` before proxy an
 
 | Path | Content |
 | --- | --- |
-| `config/` | Surge, Clash, and Stash templates |
+| `config/` | Surge, Clash/Mihomo/Stash templates plus Loon and Quantumult X rule snippets |
 | `rules/ai/` | AI and developer-tool focused rules |
 | `rules/services/` | Microsoft, Telegram, Twitter, JetBrains, and more |
 | `rules/media/` | YouTube, Netflix, Spotify, TikTok, GlobalMedia |
@@ -103,15 +114,16 @@ For domestic China usage, keep `rules/direct/ChinaServices.list` before proxy an
 | [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) | Clash / Stash base rules |
 | [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) | Mihomo / Clash Meta ecosystem reference |
 | [xiaolai/anthropic-claude-surge-rules-set](https://github.com/xiaolai/anthropic-claude-surge-rules-set) | External reference for Claude Code, Claude Desktop, MCP, and Anthropic IP coverage; not used as a remote dependency |
+| [KOP-XIAO/QuantumultX](https://github.com/KOP-XIAO/QuantumultX) | Quantumult X resource parser reference used by the rules-only snippet |
 | [Local curated split rules](rules/ai/) | Dedicated ChatGPT, Claude, Gemini, GitHub/Copilot rules maintained in `rules/ai/` |
 
-These sources are selected because they are actively maintained, widely used by the community, and cover different parts of the proxy rules ecosystem well. This repository does not try to replace them; it mirrors, splits, and combines practical pieces into a comfortable everyday setup for Surge, Clash, and Stash.
+These sources are selected because they are actively maintained, widely used by the community, and cover different parts of the proxy rules ecosystem well. This repository does not try to replace them; it mirrors, splits, and combines practical pieces into a comfortable everyday setup for Surge, Clash/Mihomo, Stash, Loon, and Quantumult X.
 
 High-frequency base rules such as China domains, China IP, LAN, GeoIP, and Apple global rules prefer client built-ins or active upstream sources.
 
 ### 🙏 Thanks
 
-Thanks to @blackmatrix7, @Loyalsoldier, @MetaCubeX, @chenyk1219, @Coldvvater, and @xiaolai for publishing and maintaining useful rule sources and references through their public projects. This repository uses or references their public work where noted above.
+Thanks to @blackmatrix7, @Loyalsoldier, @MetaCubeX, @chenyk1219, @Coldvvater, @xiaolai, and @KOP-XIAO for publishing and maintaining useful rule sources and references through their public projects. This repository uses or references their public work where noted above.
 
 ### 🔄 Update
 
@@ -123,6 +135,10 @@ Refresh mirrored rules from upstream:
 
 Commit and push after updating.
 
+### 📄 License
+
+This repository's original templates, scripts, documentation, and locally curated additions are released under the [MIT License](LICENSE). Mirrored or referenced upstream rule lists remain governed by their own upstream licenses and terms.
+
 ---
 
 <details>
@@ -130,7 +146,7 @@ Commit and push after updating.
 
 ## 中文
 
-Surge/Clash Rules Mirror 是一个面向 Surge、Clash、Stash 的规则镜像与配置模板仓库。
+Surge/Clash Rules Mirror 是一个面向 Surge、Clash、Mihomo、Stash、Loon、Quantumult X 的规则镜像与配置模板仓库。
 
 仓库重点整理 AI 服务、开发工具、流媒体、常用服务、直连规则和拦截规则。模板默认使用本仓库的 GitHub Raw 地址，可以作为个人配置的起点。
 
@@ -145,7 +161,7 @@ https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/
 - 🇨🇳 国内常用服务直连：腾讯、阿里、支付宝、阿里云、坚果云等走本地直连表
 - 🧑‍💻 开发服务独立分流：GitHub、Microsoft、OneDrive、JetBrains
 - 🎬 流媒体独立分流：YouTube、Netflix、Spotify、TikTok
-- 🧩 同时提供 Surge、Clash、Stash 模板
+- 🧩 同时提供 Surge、Clash/Mihomo、Stash、Loon、Quantumult X 模板或规则片段
 - 🔄 自维护规则结合活跃上游规则源
 - 📝 模板使用占位符，方便填写自己的节点信息
 
@@ -155,22 +171,31 @@ https://raw.githubusercontent.com/bleeeet/surge-clash-rules-mirror/main/
 | --- | --- |
 | Surge 单个 Snell 节点 | [`config/surge-template.conf`](config/surge-template.conf) |
 | Surge 多个 Snell / ShadowTLS 节点 | [`config/surge-template-multi-node.conf`](config/surge-template-multi-node.conf) |
-| Clash / Stash 单节点 | [`config/clash-template.yaml`](config/clash-template.yaml) |
-| Clash / Stash 多节点 | [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml) |
+| Clash / Mihomo / Stash 单节点 | [`config/clash-template.yaml`](config/clash-template.yaml) |
+| Clash / Mihomo / Stash 多节点 | [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml) |
+| Loon 规则片段 | [`config/loon-rules.conf`](config/loon-rules.conf) |
+| Quantumult X 规则片段 | [`config/quantumultx-rules.conf`](config/quantumultx-rules.conf) |
 | 已有 Surge 配置，只需要复制分组和规则 | [`config/surge-rules-github.tpl.conf`](config/surge-rules-github.tpl.conf) |
 
 ### ⚡ 使用方式
 
 Surge 单节点使用 [`config/surge-template.conf`](config/surge-template.conf)，多节点使用 [`config/surge-template-multi-node.conf`](config/surge-template-multi-node.conf)。
 
-Clash / Stash 单节点使用 [`config/clash-template.yaml`](config/clash-template.yaml)，多节点使用 [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml)。
+Clash / Mihomo / Stash 单节点使用 [`config/clash-template.yaml`](config/clash-template.yaml)，多节点使用 [`config/clash-template-multi-node.yaml`](config/clash-template-multi-node.yaml)。这两份模板使用 Clash Meta / Mihomo 风格的 rule provider 结构，适合 Mihomo 兼容客户端和 Stash。
 
-Clash / Stash 模板包含这些常见协议示例：
+Clash / Mihomo / Stash 模板包含这些常见协议示例：
 
 - VLESS / Reality
 - Shadowsocks
 - Trojan
 - VMess
+
+Loon 和 Quantumult X 不能直接使用 Clash YAML，所以仓库提供的是规则片段：
+
+- [`config/loon-rules.conf`](config/loon-rules.conf)
+- [`config/quantumultx-rules.conf`](config/quantumultx-rules.conf)
+
+先在客户端里配置自己的节点和策略组，再复制或导入对应规则片段。AI 相关策略组建议只放代理节点。
 
 ### 🧠 策略组
 
@@ -198,12 +223,17 @@ Clash / Stash 模板包含这些常见协议示例：
 | [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) | Clash / Stash 基础规则 |
 | [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) | Mihomo / Clash Meta 生态参考 |
 | [xiaolai/anthropic-claude-surge-rules-set](https://github.com/xiaolai/anthropic-claude-surge-rules-set) | Claude Code、Claude Desktop、MCP 和 Anthropic IP 覆盖的外部参考；不作为远程规则依赖 |
+| [KOP-XIAO/QuantumultX](https://github.com/KOP-XIAO/QuantumultX) | Quantumult X 规则片段使用的资源解析器参考 |
 | [本地整理的拆分规则](rules/ai/) | `rules/ai/` 里维护 ChatGPT、Claude、Gemini、GitHub/Copilot 专用规则 |
 
-选择这些来源，是因为它们维护活跃、覆盖面互补，也是在社区里被大量使用和验证过的规则来源。本仓库不是替代它们，而是把这些来源里实用的部分镜像、拆分、归纳和组合成一套日常用起来更顺手的 Surge、Clash、Stash 配置。
+选择这些来源，是因为它们维护活跃、覆盖面互补，也是在社区里被大量使用和验证过的规则来源。本仓库不是替代它们，而是把这些来源里实用的部分镜像、拆分、归纳和组合成一套日常用起来更顺手的 Surge、Clash/Mihomo、Stash、Loon、Quantumult X 配置。
 
 ### 🙏 致谢
 
-感谢 @blackmatrix7、@Loyalsoldier、@MetaCubeX、@chenyk1219、@Coldvvater、@xiaolai 通过公开项目发布并维护这些有价值的规则源与参考内容。本仓库仅在上文标注范围内使用或参考这些公开内容。
+感谢 @blackmatrix7、@Loyalsoldier、@MetaCubeX、@chenyk1219、@Coldvvater、@xiaolai、@KOP-XIAO 通过公开项目发布并维护这些有价值的规则源与参考内容。本仓库仅在上文标注范围内使用或参考这些公开内容。
+
+### 📄 License
+
+本仓库原创的模板、脚本、文档和本地整理补充内容使用 [MIT License](LICENSE)。镜像或引用的上游规则列表仍遵循各自上游项目的许可与使用条款。
 
 </details>
