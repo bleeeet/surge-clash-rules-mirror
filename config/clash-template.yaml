@@ -1,0 +1,307 @@
+# ============================================================
+# Clash / Stash 模板：填写自己的节点即可使用
+# ============================================================
+#
+# A. 规则仓库地址
+#    默认调用本仓库：
+#      https://raw.githubusercontent.com/bleeeet/surge-rules/main
+#
+#    朋友直接使用时，这里不用改。
+#    如果你 fork 了这个仓库，再把全文里的 bleeeet/surge-rules/main
+#    替换成自己的 GitHub 用户名、仓库名和分支名。
+#
+# B. 必填节点信息
+#    默认启用 Node-1。把 Node-1 改成你自己的节点即可。
+#    你使用什么协议，就保留对应协议示例，删除或注释其他示例。
+#
+# C. 常见协议字段说明
+#    server      -> 服务器 IP 或域名
+#    port        -> 端口
+#    password    -> 密码，常见于 Shadowsocks、Trojan
+#    uuid        -> 用户 ID，常见于 VLESS、VMess
+#    cipher      -> 加密方式，常见于 Shadowsocks
+#    tls         -> 是否启用 TLS
+#    udp         -> 是否启用 UDP
+#    network     -> 传输方式，例如 tcp、ws、grpc
+#    servername  -> TLS / Reality 伪装域名
+#
+# D. Reality / ShadowTLS 等高级配置
+#    不同 Clash 内核支持程度不同。这里放常见 VLESS Reality 示例。
+#    如果你的客户端不支持某个字段，就以你的客户端文档为准。
+#
+# 注意：不要把填好真实节点密钥的版本上传到公开仓库。
+# ============================================================
+
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+external-controller: 127.0.0.1:9090
+
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:1053
+  default-nameserver:
+    - 119.29.29.29
+    - 8.8.8.8
+    - 1.1.1.1
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 1.1.1.1
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - localhost
+    - time.*.com
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
+
+proxies:
+  # 默认示例：VLESS + Reality。用你的真实信息替换这些占位符。
+  - name: Node-1
+    type: vless
+    server: YOUR_SERVER_IP_OR_DOMAIN
+    port: YOUR_PORT
+    uuid: YOUR_UUID
+    tls: true
+    udp: true
+    network: tcp
+    servername: YOUR_REALITY_SERVERNAME
+    flow: xtls-rprx-vision
+    reality-opts:
+      public-key: YOUR_REALITY_PUBLIC_KEY
+      short-id: YOUR_REALITY_SHORT_ID
+    client-fingerprint: chrome
+
+  # Shadowsocks 示例。使用时取消注释，并把 Node-SS 加入 proxy-groups。
+  # - name: Node-SS
+  #   type: ss
+  #   server: YOUR_SERVER_IP_OR_DOMAIN
+  #   port: YOUR_PORT
+  #   cipher: YOUR_SS_CIPHER
+  #   password: YOUR_SS_PASSWORD
+  #   udp: true
+
+  # Trojan 示例。使用时取消注释，并把 Node-Trojan 加入 proxy-groups。
+  # - name: Node-Trojan
+  #   type: trojan
+  #   server: YOUR_SERVER_IP_OR_DOMAIN
+  #   port: YOUR_PORT
+  #   password: YOUR_TROJAN_PASSWORD
+  #   sni: YOUR_TLS_SERVERNAME
+  #   udp: true
+
+  # VMess 示例。使用时取消注释，并把 Node-VMess 加入 proxy-groups。
+  # - name: Node-VMess
+  #   type: vmess
+  #   server: YOUR_SERVER_IP_OR_DOMAIN
+  #   port: YOUR_PORT
+  #   uuid: YOUR_UUID
+  #   alterId: 0
+  #   cipher: auto
+  #   tls: true
+  #   servername: YOUR_TLS_SERVERNAME
+  #   network: ws
+  #   ws-opts:
+  #     path: YOUR_WS_PATH
+  #     headers:
+  #       Host: YOUR_WS_HOST
+  #   udp: true
+
+proxy-groups:
+  - name: 🔰 手动选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - Node-1
+      - 🎯 全球直连
+      - ⛔️ 禁止访问
+
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - Node-1
+
+  - name: ChatGPT
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: Claude
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: Gemini
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: GitHub
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: Microsoft
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, 🎯 全球直连, Node-1]
+  - name: Telegram
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: Apple
+    type: select
+    proxies: [🎯 全球直连, 🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: YouTube
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: Netflix
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: Spotify
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: AI
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, Node-1]
+  - name: 🎯 全球直连
+    type: select
+    proxies: [DIRECT]
+  - name: ⛔️ 禁止访问
+    type: select
+    proxies: [REJECT]
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies: [🔰 手动选择, ♻️ 自动选择, 🎯 全球直连, Node-1]
+
+rule-providers:
+  Direct:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/direct/Direct.list
+    path: ./ruleset/Direct.list
+    interval: 86400
+  Unblocking:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/direct/Unblocking.list
+    path: ./ruleset/Unblocking.list
+    interval: 86400
+  Hijacking:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/block/Hijacking.list
+    path: ./ruleset/Hijacking.list
+    interval: 86400
+  BlockHttpDNS:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/block/BlockHttpDNS.list
+    path: ./ruleset/BlockHttpDNS.list
+    interval: 86400
+  Privacy:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/block/Privacy_All_No_Resolve.list
+    path: ./ruleset/Privacy_All_No_Resolve.list
+    interval: 86400
+  Spotify:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/media/Spotify.list
+    path: ./ruleset/Spotify.list
+    interval: 86400
+  Microsoft:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/services/Microsoft.list
+    path: ./ruleset/Microsoft.list
+    interval: 86400
+  OneDrive:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/services/OneDrive.list
+    path: ./ruleset/OneDrive.list
+    interval: 86400
+  Telegram:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/services/Telegram.list
+    path: ./ruleset/Telegram.list
+    interval: 86400
+  ChatGPT:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/ChatGPT.list
+    path: ./ruleset/ChatGPT.list
+    interval: 86400
+  Anthropic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/Anthropic.list
+    path: ./ruleset/Anthropic.list
+    interval: 86400
+  Gemini:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/Gemini.list
+    path: ./ruleset/Gemini.list
+    interval: 86400
+  GitHubCopilot:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/ai/GitHubCopilot.list
+    path: ./ruleset/GitHubCopilot.list
+    interval: 86400
+  AI:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/services/AI.list
+    path: ./ruleset/AI.list
+    interval: 86400
+  YouTube:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/media/YouTube.list
+    path: ./ruleset/YouTube.list
+    interval: 86400
+  YouTubeMusic:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/media/YouTubeMusic.list
+    path: ./ruleset/YouTubeMusic.list
+    interval: 86400
+  Netflix:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/media/Netflix.list
+    path: ./ruleset/Netflix.list
+    interval: 86400
+  Proxy:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/proxy/Proxy_All_No_Resolve.list
+    path: ./ruleset/Proxy_All_No_Resolve.list
+    interval: 86400
+
+rules:
+  - RULE-SET,Unblocking,🎯 全球直连
+  - RULE-SET,Direct,🎯 全球直连
+  - RULE-SET,Hijacking,⛔️ 禁止访问
+  - RULE-SET,BlockHttpDNS,⛔️ 禁止访问
+  - RULE-SET,Privacy,⛔️ 禁止访问
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,Microsoft,Microsoft
+  - RULE-SET,OneDrive,Microsoft
+  - RULE-SET,Telegram,Telegram
+  - RULE-SET,ChatGPT,ChatGPT
+  - RULE-SET,Anthropic,Claude
+  - RULE-SET,Gemini,Gemini
+  - RULE-SET,GitHubCopilot,GitHub
+  - RULE-SET,AI,AI
+  - RULE-SET,YouTube,YouTube
+  - RULE-SET,YouTubeMusic,YouTube
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,Proxy,🔰 手动选择
+  - GEOIP,LAN,🎯 全球直连,no-resolve
+  - GEOIP,CN,🎯 全球直连
+  - MATCH,🐟 漏网之鱼
