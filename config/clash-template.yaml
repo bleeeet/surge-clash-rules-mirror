@@ -176,33 +176,33 @@ proxy-groups:
 rule-providers:
   Direct:
     type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/direct/Direct.list
-    path: ./ruleset/Direct.list
+    behavior: domain
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt
+    path: ./ruleset/loyalsoldier-direct.yaml
     interval: 86400
-  Unblocking:
+  Proxy:
     type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/direct/Unblocking.list
-    path: ./ruleset/Unblocking.list
+    behavior: domain
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt
+    path: ./ruleset/loyalsoldier-proxy.yaml
     interval: 86400
-  Hijacking:
+  Reject:
     type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/block/Hijacking.list
-    path: ./ruleset/Hijacking.list
+    behavior: domain
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt
+    path: ./ruleset/loyalsoldier-reject.yaml
     interval: 86400
-  BlockHttpDNS:
+  Private:
     type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/block/BlockHttpDNS.list
-    path: ./ruleset/BlockHttpDNS.list
+    behavior: domain
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt
+    path: ./ruleset/loyalsoldier-private.yaml
     interval: 86400
-  Privacy:
+  ChinaCIDR:
     type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/block/Privacy_All_No_Resolve.list
-    path: ./ruleset/Privacy_All_No_Resolve.list
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt
+    path: ./ruleset/loyalsoldier-cncidr.yaml
     interval: 86400
   Spotify:
     type: http
@@ -276,19 +276,10 @@ rule-providers:
     url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/media/Netflix.list
     path: ./ruleset/Netflix.list
     interval: 86400
-  Proxy:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/bleeeet/surge-rules/main/rules/proxy/Proxy_All_No_Resolve.list
-    path: ./ruleset/Proxy_All_No_Resolve.list
-    interval: 86400
-
 rules:
-  - RULE-SET,Unblocking,🎯 全球直连
+  - RULE-SET,Private,🎯 全球直连
+  - RULE-SET,Reject,⛔️ 禁止访问
   - RULE-SET,Direct,🎯 全球直连
-  - RULE-SET,Hijacking,⛔️ 禁止访问
-  - RULE-SET,BlockHttpDNS,⛔️ 禁止访问
-  - RULE-SET,Privacy,⛔️ 禁止访问
   - RULE-SET,Spotify,Spotify
   - RULE-SET,Microsoft,Microsoft
   - RULE-SET,OneDrive,Microsoft
@@ -302,6 +293,7 @@ rules:
   - RULE-SET,YouTubeMusic,YouTube
   - RULE-SET,Netflix,Netflix
   - RULE-SET,Proxy,🔰 手动选择
+  - RULE-SET,ChinaCIDR,🎯 全球直连
   - GEOIP,LAN,🎯 全球直连,no-resolve
   - GEOIP,CN,🎯 全球直连
   - MATCH,🐟 漏网之鱼

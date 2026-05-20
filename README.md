@@ -90,10 +90,23 @@ YOUR_SNELL_PSK
 
 这些规则变化比较频繁，暂时保留上游链接更省心：
 
-- 🇨🇳 中国域名、中国公司 IP、Google CN、Amazon CN、Cloudflare CN
-- 🏠 局域网、私有网、LAN
+- 🇨🇳 中国域名、中国 IP、Google CN、Amazon CN、Cloudflare CN
+- 🏠 局域网、私有网、LAN、private
 - 🗺️ Surge GeoIP 数据库
 - 🍎 Apple 全量规则
+
+## 🧱 规则来源选择
+
+这个仓库会混合使用几类规则源：
+
+| 来源 | 用途 |
+| --- | --- |
+| `blackmatrix7/ios_rule_script` | Surge 细分服务规则，比如 YouTube、Netflix、Microsoft、Privacy |
+| `Loyalsoldier/clash-rules` | Clash / Stash 基础规则，比如 direct、proxy、reject、private、cncidr |
+| `MetaCubeX/meta-rules-dat` | 更适合 Mihomo / Clash Meta 体系，后续需要 `.mrs` 或 geosite/geoip 时再接入 |
+| 本仓库自维护 | ChatGPT、Claude、Gemini、GitHub/Copilot 这类专用分流 |
+
+`ACL4SSR` 属于老牌可用规则源，但新模板里会尽量减少依赖，优先使用维护更活跃、社区使用更广的规则源。
 
 ## 🔄 更新规则
 
