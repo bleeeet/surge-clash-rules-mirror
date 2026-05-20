@@ -1,60 +1,121 @@
-# Surge rules mirror
+# 🚀 Surge / Clash Rules Mirror
 
-这个目录用于把不稳定的第三方 Surge `RULE-SET` 规则镜像到自己的仓库里。
+这是一个自用的代理规则镜像仓库，也可以给朋友当作快速配置模板使用。
 
-## 已镜像
+目标很简单：
 
-- `rules/direct/`: 白名单、直连修正规则
-- `rules/block/`: 劫持、HTTPDNS、隐私拦截规则
-- `rules/services/`: AI、GitHub、Microsoft、Telegram 等服务规则
-- `rules/ai/`: ChatGPT、Claude、Gemini、GitHub/Copilot 专用分流规则
-- `rules/media/`: YouTube、Netflix、Spotify、TikTok 等媒体规则
-- `rules/proxy/`: 常见代理规则
-- `config/surge-template.conf`: 给别人直接填写节点信息的精简完整模板，规则默认调用本仓库
-- `config/surge-template-multi-node.conf`: 多节点模板，适合多个 Snell 节点和可选 ShadowTLS 节点
-- `config/clash-template.yaml`: Clash / Stash 精简模板，包含 VLESS、Shadowsocks、Trojan、VMess 示例
+- 📦 把常用第三方规则文件镜像到自己的 GitHub，减少上游链接失效影响
+- 🧠 单独拆出 ChatGPT、Claude、Gemini、GitHub Copilot 等 AI / 开发工具分流
+- 🧩 提供 Surge、Clash、Stash 可直接改的模板
+- 🔐 模板只保留占位符，不包含真实节点密钥
 
-## 建议继续使用上游
-
-这些规则变化比较频繁，或者由上游维护更省心，暂时不建议固定到自己的仓库：
-
-- 中国域名、中国公司 IP、Google CN、Amazon CN、Cloudflare CN
-- 局域网、私有网、LAN
-- Surge 的 GeoIP 数据库
-- Apple 全量规则
-
-## 怎么调用
-
-规则默认调用本仓库 Raw 地址：
+默认规则地址：
 
 ```text
 https://raw.githubusercontent.com/bleeeet/surge-rules/main/
 ```
 
-朋友使用 [config/surge-template.conf](config/surge-template.conf) 时，只需要填写自己的节点地址、端口、PSK 等信息即可。节点很多时，可以改用 [config/surge-template-multi-node.conf](config/surge-template-multi-node.conf)。使用 Clash / Stash 时，可以改用 [config/clash-template.yaml](config/clash-template.yaml)。不要把填好真实节点地址、Snell PSK、ShadowTLS 密码、UUID、Reality 密钥、Surge 控制器密码的完整配置直接上传到公开仓库。
+## 🧭 选哪个模板？
 
-## AI 专用分流
+| 场景 | 文件 |
+| --- | --- |
+| Surge，只有一个 Snell 节点 | [`config/surge-template.conf`](config/surge-template.conf) |
+| Surge，有多个 Snell / ShadowTLS 节点 | [`config/surge-template-multi-node.conf`](config/surge-template-multi-node.conf) |
+| Clash / Stash，节点协议不固定 | [`config/clash-template.yaml`](config/clash-template.yaml) |
+| 已经有自己的 Surge 配置，只想复制分组和规则 | [`config/surge-rules-github.tpl.conf`](config/surge-rules-github.tpl.conf) |
 
-`config/surge-rules-github.tpl.conf` 里已经加了这些独立策略组：
+## ⚡ 快速使用
 
-- `ChatGPT`
-- `Claude`
-- `Gemini`
-- `GitHub`
-- `Microsoft`
-- `Telegram`
-- `Apple`
-- `YouTube`
-- `Netflix`
-- `Spotify`
-- `AI`
+### Surge 单节点
 
-其中 `GitHub` 组同时包含 GitHub 和 GitHub Copilot。`AI` 组作为其他 AI 服务兜底，专用规则会先于总 AI 规则匹配。
+打开 [`config/surge-template.conf`](config/surge-template.conf)，主要填写：
 
-## 刷新规则
+```text
+YOUR_SERVER_IP_OR_DOMAIN
+YOUR_SNELL_PORT
+YOUR_SNELL_PSK
+```
 
-以后想从上游重新拉取这些镜像规则，可以运行：
+如果没有 ShadowTLS，保持 ShadowTLS 那一行注释即可。
+
+### Surge 多节点
+
+打开 [`config/surge-template-multi-node.conf`](config/surge-template-multi-node.conf)：
+
+1. 在 `[Proxy]` 里复制一个节点示例
+2. 改节点名、服务器、端口、PSK
+3. 把节点名加入 `🔰 节点选择` 和 `♻️ 自动选择`
+
+### Clash / Stash
+
+打开 [`config/clash-template.yaml`](config/clash-template.yaml)，按自己的协议保留对应示例：
+
+- VLESS / Reality
+- Shadowsocks
+- Trojan
+- VMess
+
+不用的协议示例可以保持注释或删除。
+
+## 🧠 已拆分的策略组
+
+这些服务已经单独分流，方便在客户端里分别指定节点：
+
+- 🤖 `ChatGPT`
+- 🧠 `Claude`
+- 💎 `Gemini`
+- 🧑‍💻 `GitHub`，包含 GitHub Copilot
+- Ⓜ️ `Microsoft`，包含 OneDrive
+- ✈️ `Telegram`
+- 🍎 `Apple`
+- ▶️ `YouTube`
+- 🎬 `Netflix`
+- 🎵 `Spotify`
+- 🧩 `AI`，其他 AI 服务兜底
+
+规则顺序里，专用 AI 规则会先匹配，最后再走总 `AI` 兜底。
+
+## 📁 规则目录
+
+| 目录 | 内容 |
+| --- | --- |
+| `rules/ai/` | ChatGPT、Claude、Gemini、GitHub/Copilot |
+| `rules/services/` | Microsoft、OneDrive、Telegram、Twitter、JetBrains 等 |
+| `rules/media/` | YouTube、Netflix、Spotify、TikTok、GlobalMedia |
+| `rules/direct/` | 白名单、直连修正 |
+| `rules/block/` | 防劫持、HTTPDNS、隐私拦截 |
+| `rules/proxy/` | 常见代理规则 |
+
+## 🌏 继续使用上游的规则
+
+这些规则变化比较频繁，暂时保留上游链接更省心：
+
+- 🇨🇳 中国域名、中国公司 IP、Google CN、Amazon CN、Cloudflare CN
+- 🏠 局域网、私有网、LAN
+- 🗺️ Surge GeoIP 数据库
+- 🍎 Apple 全量规则
+
+## 🔄 更新规则
+
+想从上游重新拉取镜像规则时，在仓库目录运行：
 
 ```bash
 ./tools/update-rules.sh
 ```
+
+更新后再提交并推送即可。
+
+## 🔐 安全提醒
+
+不要把填好真实信息的配置文件上传到公开仓库。
+
+尤其不要公开：
+
+- 服务器 IP / 域名
+- Snell PSK
+- ShadowTLS 密码
+- Clash / Stash 的 UUID、Reality public-key、short-id
+- Trojan / Shadowsocks 密码
+- Surge 控制器密码
+
+这个仓库里的模板只放占位符，可以公开分享。
