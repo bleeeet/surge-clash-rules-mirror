@@ -9,7 +9,6 @@
 | `rules/direct/ChinaServices.list` | Locally curated DIRECT rules for common mainland China services |
 | `rules/block/Hijacking.list` | `https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Hijacking/Hijacking.list` |
 | `rules/block/BlockHttpDNS.list` | `https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BlockHttpDNS/BlockHttpDNS.list` |
-| `rules/block/Privacy_All_No_Resolve.list` | `https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Privacy/Privacy_All_No_Resolve.list` |
 | `rules/media/Spotify.list` | `https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Spotify/Spotify.list` |
 | `rules/media/YouTube.list` | `https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTube/YouTube.list` |
 | `rules/media/YouTubeMusic.list` | `https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTubeMusic/YouTubeMusic.list` |

@@ -15,7 +15,7 @@ download 'https://raw.githubusercontent.com/chenyk1219/surge/release/Unblocking.
 download 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Direct/Direct.list' 'rules/direct/Direct.list'
 download 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Hijacking/Hijacking.list' 'rules/block/Hijacking.list'
 download 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BlockHttpDNS/BlockHttpDNS.list' 'rules/block/BlockHttpDNS.list'
-download 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Privacy/Privacy_All_No_Resolve.list' 'rules/block/Privacy_All_No_Resolve.list'
+# Privacy_All_No_Resolve is intentionally disabled: it is very large and can slow down some sites/apps.
 download 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Spotify/Spotify.list' 'rules/media/Spotify.list'
 download 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTube/YouTube.list' 'rules/media/YouTube.list'
 download 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTubeMusic/YouTubeMusic.list' 'rules/media/YouTubeMusic.list'
